@@ -1,5 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>网页模板 | 关于我们</title>
+</head>
 <body>
+	<h1 id="result"></h1>
     <script type="text/javaScript">
-		window.open("./apple-app-site-association");
+		window.onload=function()
+		{
+			var url="apple-app-site-association";
+			var request=new XMLHttpRequest();
+			request.open('GET',url);
+			request.send(null);
+			request.onload=function () {
+				if(request.status==200){
+					var json=JSON.parse(request.responseText);
+					console.log(json)
+					document.getElementById('result').innerText = json;
+				}
+			}
+		}
     </script>
 </body>
+</html>
